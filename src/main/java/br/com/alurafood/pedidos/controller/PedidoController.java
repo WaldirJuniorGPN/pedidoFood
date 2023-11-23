@@ -2,6 +2,7 @@ package br.com.alurafood.pedidos.controller;
 
 import br.com.alurafood.pedidos.dto.PedidoDto;
 import br.com.alurafood.pedidos.dto.StatusDto;
+import br.com.alurafood.pedidos.dto.response.DadosDetalhamentoPedido;
 import br.com.alurafood.pedidos.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class PedidoController {
         private PedidoService service;
 
         @GetMapping()
-        public List<PedidoDto> listarTodos() {
+        public List<DadosDetalhamentoPedido> listarTodos() {
             return service.obterTodos();
         }
 

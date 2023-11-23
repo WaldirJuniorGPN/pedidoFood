@@ -2,6 +2,7 @@ package br.com.alurafood.pedidos.service;
 
 import br.com.alurafood.pedidos.dto.PedidoDto;
 import br.com.alurafood.pedidos.dto.StatusDto;
+import br.com.alurafood.pedidos.dto.response.DadosDetalhamentoPedido;
 import br.com.alurafood.pedidos.model.Pedido;
 import br.com.alurafood.pedidos.model.Status;
 import br.com.alurafood.pedidos.repository.PedidoRepository;
@@ -26,10 +27,10 @@ public class PedidoService {
     private final ModelMapper modelMapper;
 
 
-    public List<PedidoDto> obterTodos() {
-        return repository.findAll().stream()
-                .map(p -> modelMapper.map(p, PedidoDto.class))
-                .collect(Collectors.toList());
+    public List<DadosDetalhamentoPedido> obterTodos() {
+
+        List<DadosDetalhamentoPedido> listDadosDetalhamentoPedidos = (List<DadosDetalhamentoPedido>) repository.findAll().stream().map(DadosDetalhamentoPedido::new);
+        return listDadosDetalhamentoPedidos;
     }
 
     public PedidoDto obterPorId(Long id) {
