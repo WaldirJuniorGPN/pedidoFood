@@ -45,11 +45,6 @@ public class PedidoService {
         pedido.setDataHora(LocalDateTime.now());
         pedido.setStatus(Status.REALIZADO);
 
-        for (int i = 0; i < dto.getItens().size(); i++) {
-            pedido.getItens().get(i).setDescricao(dto.getItens().get(i).getDescricao());
-            System.out.println(dto.getItens().get(i).getDescricao());
-        }
-
 
         pedido.getItens().forEach(item -> item.setPedido(pedido));
         Pedido salvo = repository.save(pedido);
